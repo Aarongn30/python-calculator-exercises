@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple Flask Calculator</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <main>
+      <h1>Simple Calculator</h1>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class="messages">
+          {% for m in messages %}
+            <li>{{ m }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      <form action="/calculate" method="post">
+        <label>First number
+          <input type="text" name="a" required>
+        </label>
+
+        <label>Second number
+          <input type="text" name="b" required>
+        </label>
+
+        <div class="ops">
+          <label><input type="radio" name="op" value="add" checked> +</label>
+          <label><input type="radio" name="op" value="sub"> -</label>
+          <label><input type="radio" name="op" value="mul"> ×</label>
+          <label><input type="radio" name="op" value="div"> ÷</label>
+        </div>
+
+        <button type="submit">Calculate</button>
+      </form>
+
+      <footer>
+        <p>Run locally: see README</p>
+      </footer>
+    </main>
+  </body>
+</html>
