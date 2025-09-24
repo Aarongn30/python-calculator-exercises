@@ -39,3 +39,18 @@ Run:
 ```powershell
 pytest -q
 ```
+
+Deploying to Render
+-------------------
+
+1. Push your repo to GitHub (already done).
+2. Go to https://render.com and create an account or sign in.
+3. Click "New" → "Web Service" → "Connect a repository" and select this repository.
+4. Set the branch to `main`.
+5. For the Start Command use:
+
+```
+gunicorn app:app
+```
+
+Render will install dependencies from `requirements.txt` and deploy the app. The included `render.yaml` enables automatic deploy configuration if you use Render's git-based setup.
