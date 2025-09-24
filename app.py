@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+import os
 from calc import compute
 
 app = Flask(__name__)
-app.secret_key = "dev_secret_key"
+# Use SECRET_KEY from environment (set on Render) or fallback for local dev
+app.secret_key = os.environ.get("SECRET_KEY", "dev_secret_key")
 
 @app.route("/", methods=["GET"])
 def index():
